@@ -8,7 +8,7 @@ dotenv.config();
 const request = supertest(app);
 
 describe("Testing the testing environment", () => {
-  it("should test that true is true", () => {
+  it("Test that true is true", () => {
     expect(true).toBe(true);
   });
 });
@@ -24,7 +24,7 @@ describe("Testing the products endpoints", () => {
     name: "Test product",
     price: 10,
   };
-  it("should test that with a valid product the POST /product endpoint is adding a new product", async () => {
+  it("Test that with a valid product the POST /product endpoint is adding a new product", async () => {
     const response = await request.post("/products").send(validProduct);
     const respons2 = await request.post("/products").send(validProduct);
     expect(response.status).toBe(201);
@@ -34,11 +34,6 @@ describe("Testing the products endpoints", () => {
     expect(response.status).toBe(404);
   });
   it("When deleting the /products/:id endpoint: expect successful 204 response code", async () => {
-    const response = await request.get("/products");
-    const resDelete = await request.delete(`/products${response.body[0]._id}`);
-    expect(resDelete.status).toBe(404);
-  });
-  it("When updating a /product/:id endpoint with new data: expect requests to be accepted.Expect the response.body.name to be changed Expect the typeof name in response.body to be “string", async () => {
     const response = await request.get("/products");
     const resDelete = await request.delete(`/products${response.body[0]._id}`);
     expect(resDelete.status).toBe(404);
