@@ -76,7 +76,6 @@ describe("Testing the products endpoints", () => {
   });
 
   // afterAll
-
   // We are going to drop the testing database in Mongo
   // We don't need this fake/dummy data anymore because it was just a test
 
