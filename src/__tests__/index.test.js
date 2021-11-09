@@ -11,18 +11,17 @@ describe("Testing the testing environment", () => {
   it("should test that true is true", () => {
     expect(true).toBe(true);
   });
+//   it("should test that false is false", () => {
+//     expect(false).toBe(false);
+//   });
 
-  it("should test that false is false", () => {
-    expect(false).toBe(false);
-  });
+//   it("should test that 1 is 1", () => {
+//     expect(1).toBe(1);
+//   });
 
-  it("should test that 1 is 1", () => {
-    expect(1).toBe(1);
-  });
-
-  it("should test that 0 is 0", () => {
-    expect(0).toBe(0);
-  });
+//   it("should test that 0 is 0", () => {
+//     expect(0).toBe(0);
+//   });
 });
 
 describe("Testing the products endpoints", () => {
