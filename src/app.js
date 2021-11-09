@@ -8,10 +8,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get("/test", (req, res) => {
-  res.send({ message: "Test success" });
-});
-
 app.use("/products", productsRouter);
 
 app.use(mainErrorHandler);
