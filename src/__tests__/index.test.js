@@ -14,9 +14,6 @@ describe("Testing the testing environment", () => {
 });
 //
 describe("Testing the products endpoints", () => {
-  // beforeAll
-  // We are going to connect to the testing database in Mongo.
-  // From here on, all the following testing operations will be performed on the testing database.
   beforeAll((done) => {
     mongoose.connect(process.env.MONGO_CONNECTION_TEST).then(() => {
       console.log("Connected to Mongo!");
@@ -76,10 +73,7 @@ describe("When updating a /product/:id endpoint with new data:", () => {
     expect(typeof response.body[0].name).toBe("string");
   });
 });
-
-// afterAll
-// We are going to drop the testing database in Mongo
-// We don't need this fake/dummy data anymore because it was just a test
+//
 afterAll((done) => {
   mongoose.connection
     .dropDatabase()
