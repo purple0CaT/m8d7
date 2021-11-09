@@ -12,33 +12,7 @@ productsRouter.get("/", async (req, res, next) => {
     next(createHttpError(500));
   }
 });
-productsRouter.get("/:id", async (req, res, next) => {
-  try {
-    const products = await ProductModel.findById(req.params.id);
-    console.log(products);
-    if (products) {
-      res.send(products);
-    } else {
-      next(createHttpError(404, "Not found"));
-    }
-  } catch (error) {
-    next(createHttpError(500));
-  }
-});
-productsRouter.delete("/:id", async (req, res, next) => {
-  try {
-    const deletedProduct = await ProductModel.findByIdAndDelete(req.params.id);
-    // console.log(deletedProduct);
-    if (deletedProduct) {
-      res.status(204).send();
-    } else {
-      next(createHttpError(404, "Not found"));
-    }
-  } catch (error) {
-    next(createHttpError(500));
-  }
-});
-
+//
 productsRouter.post("/", async (req, res, next) => {
   try {
     const { name, price } = req.body;
@@ -53,6 +27,35 @@ productsRouter.post("/", async (req, res, next) => {
     next(createHttpError(500));
   }
 });
+//
+productsRouter.get("/:id", async (req, res, next) => {
+  try {
+    const products = await ProductModel.findById(req.params.id);
+    console.log(products);
+    if (products) {
+      res.send(products);
+    } else {
+      next(createHttpError(404, "Not found"));
+    }
+  } catch (error) {
+    next(createHttpError(500));
+  }
+});
+//
+productsRouter.delete("/:id", async (req, res, next) => {
+  try {
+    const deletedProduct = await ProductModel.findByIdAndDelete(req.params.id);
+    // console.log(deletedProduct);
+    if (deletedProduct) {
+      res.status(204).send();
+    } else {
+      next(createHttpError(404, "Not found"));
+    }
+  } catch (error) {
+    next(createHttpError(500));
+  }
+});
+//
 productsRouter.put("/:id", async (req, res, next) => {
   try {
     const { name, price } = req.body;
@@ -62,17 +65,14 @@ productsRouter.put("/:id", async (req, res, next) => {
     }
     const product = await ProductModel.findByIdAndUpdate(
       req.params.id,
-      {
-        name,
-        price,
-      },
+      req.body,
       {
         new: true,
       }
     );
     res.status(201).send(product);
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     next(createHttpError(500));
   }
 });
