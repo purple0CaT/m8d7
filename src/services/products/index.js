@@ -3,7 +3,7 @@ import createHttpError from "http-errors";
 import { ProductModel } from "./model.js";
 
 const productsRouter = express.Router();
-
+// 
 productsRouter.get("/", async (req, res, next) => {
   try {
     const products = await ProductModel.find();
